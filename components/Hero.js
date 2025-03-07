@@ -1,14 +1,17 @@
+import SocialSidebar from "./SocialSidebar";
+
 export default function Hero() {
+  
   return (
-    <section className="relative h-screen bg-gray-900 text-white flex items-center justify-center">
+    <section className="relative min-h-screen  bg-gray-900 text-white flex items-center justify-center">
       <div className="max-w-7xl mx-auto px-8">
-        <div className="w-full flex flex-wrap items-center  justify-center text-[#fafafa] font-light leading-6 pb-12">
+        <div className="w-full flex flex-wrap items-center justify-center text-[#fafafa] font-light leading-6 pb-12">
           {/* Left Content */}
-          <div className="text-[#fafafa] basis-1/2  font-light leading-6 px-4 text-left">
-            <h1 className="text-[#fafafa] font-poppins text-[40px] font-medium leading-[64.72px] mb-4 text-left">
+          <div className="text-[#fafafa] basis-1/2 font-light leading-6 px-4 text-left">
+            <h1 className="text-[#fafafa] poppins text-[40px] font-medium leading-[64.72px] mb-4 text-left">
               I'M <span className="text-[#1ab394]">Uchechi David</span>
             </h1>
-            <h4 className="text-[#fafafa] font-poppins text-[24px] font-medium leading-[38.832px] text-left">
+            <h4 className="text-[#fafafa] poppins text-[24px] font-medium leading-[38.832px] text-left">
               <span className="text-[#1ab394] inline-block text-[24px] font-medium leading-[38.832px] pr-2 text-left">
                 A
               </span>
@@ -16,11 +19,11 @@ export default function Hero() {
                 Web Developer.
               </span>
             </h4>
-            <p className="text-gray-300 font-light font-muli leading-6 my-6 text-left">
+            <p className="text-gray-300 font-light muli leading-6 my-6 text-left">
               In a professional context, it often happens that private clients
               order a publication to be made.
             </p>
-            <button className="mt-6 bg-green-400 text-black font-bold py-2 px-6 rounded-full hover:bg-green-500 transition">
+            <button className="mt-6 muli bg-[#1ab394] hover:bg-[#0c9b7e] rounded-[16px] text-[#fafafa] inline-block font-muli font-light leading-6 px-8 py-2 text-left transition">
               Download CV
             </button>
           </div>
@@ -43,20 +46,7 @@ export default function Hero() {
         <div className="absolute right-12 top-64 w-10 h-10 bg-green-500 rounded-full"></div>
 
         {/* Social Media Sidebar */}
-        <div className="fixed left-4 top-1/3">
-          <p className="rotate-90 text-sm">Follow Me</p>
-          <div className="mt-2 space-y-3">
-            <a href="#" className="text-white text-lg block">
-              •
-            </a>
-            <a href="#" className="text-white text-lg block">
-              •
-            </a>
-            <a href="#" className="text-white text-lg block">
-              •
-            </a>
-          </div>
-        </div>
+        <SocialSidebar />
       </div>
     </section>
   );
