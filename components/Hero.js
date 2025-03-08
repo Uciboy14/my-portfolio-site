@@ -3,9 +3,9 @@ import SocialSidebar from "./SocialSidebar";
 export default function Hero() {
   
   return (
-    <section className="relative min-h-screen  bg-gray-900 text-white flex items-center justify-center">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="w-full flex flex-wrap items-center justify-center text-[#fafafa] font-light leading-6 pb-12">
+    <section className="hero-content min-h-screen flex items-center">
+      <div className="container">
+        <div className="w-full flex flex-wrap items-center justify-center text-[#fafafa] font-light leading-6">
           {/* Left Content */}
           <div className="text-[#fafafa] basis-1/2 font-light leading-6 px-4 text-left">
             <h1 className="text-[#fafafa] poppins text-[40px] font-medium leading-[64.72px] mb-4 text-left">
@@ -30,7 +30,7 @@ export default function Hero() {
 
           {/* Right Content (Image + Circles) */}
           <div className="text-[#fafafa] basis-1/2  font-light leading-6 px-4 text-left">
-            <div className=" w-100 h-100 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-lg">
+            <div className="w-110 h-110 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-lg">
               <img
                 src="/profile2.jpg" // Replace with your image path
                 alt="Jessy Doe"
@@ -42,7 +42,7 @@ export default function Hero() {
 
         {/* Floating Circles */}
         <div className="absolute right-36 bottom-36 w-8 h-8 bg-yellow-300 rounded-full"></div>
-        <div className="absolute right-28 top-32 w-6 h-6 bg-pink-500 rounded-full"></div>
+        <div className="absolute right-28 top-32 w-10 h-10 bg-pink-500 rounded-full"></div>
         <div className="absolute right-12 top-64 w-10 h-10 bg-green-500 rounded-full"></div>
 
         {/* Social Media Sidebar */}
