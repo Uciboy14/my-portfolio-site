@@ -9,7 +9,7 @@ const About = () => {
     { label: "Phone", value: "+2349063324523" },
     { label: "City", value: "Lagos, Nigeria" },
     { label: "Age", value: "26" },
-    { label: "Degree", value: "Bsc." },
+    { label: "Degree", value: "Bachelor" },
     { label: "Mail", value: "uccodetech@gmail.com" },
     { label: "Freelance", value: "Available" },
   ];
@@ -19,11 +19,11 @@ const About = () => {
 
   return (
     <section
-      className="bg-gray-900 flex items-center justify-center text-[#fafafa] font-light leading-6 py-[100px] pb-[48px] text-left
+      className="bg-gray-900 text-[#fafafa] font-light leading-6 py-[100px] pb-[48px] text-left
 "
     >
-      <div className="max-w-7xl mx-auto px-8 ">
-        <div className="p-8 rounded-lg flex flex-col md:flex-row items-center">
+      <div className="container">
+        <div className=" rounded-lg flex fr">
           {/* Image Section */}
           <div
             className="text-[#fafafa] basis-1/2 font-light leading-6 px-[15px] text-left
