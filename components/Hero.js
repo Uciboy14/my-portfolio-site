@@ -19,7 +19,7 @@ export default function Hero() {
                 Web Developer.
               </span>
             </h4>
-            <p className="text-gray-300 font-light muli leading-6 my-6 text-left">
+            <p className="text-gray-300 font-light muli leading-6  my-6 tracking-tight text-left">
               In a professional context, it often happens that private clients
               order a publication to be made.
             </p>
