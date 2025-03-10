@@ -105,7 +105,7 @@
   color: #fafafa;
   font-weight: 300;
   line-height: 24px;
-  margin: 30px 0px 0px;
+  margin: 12px 0px 0px;
   text-align: left;
 }
 
@@ -123,5 +123,31 @@
   font-weight: 300;
   line-height: 24px;
   margin: 0px 0px 8px;
+  text-align: left;
+}
+
+.col-lg-4 {
+  color: #fafafa;
+  font-weight: 300;
+  line-height: 24px;
+  padding: 0px 15px;
+  text-align: left;
+}
+
+.service-item-box {
+  border-radius: 20px;
+  box-shadow: 0px 0px 2px 0px #4f4f4f33;
+  font-weight: 300;
+  line-height: 24px;
+  padding: 30px 10px;
+  text-align: left;
+  color: #fafafa;
+}
+
+.service-content {
+  color: #fafafa;
+  font-weight: 300;
+  line-height: 24px;
+  padding: 0px 16px 0px 64px;
   text-align: left;
 }
