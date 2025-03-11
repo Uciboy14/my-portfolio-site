@@ -41,8 +41,10 @@
 }
 
 .container {
-  padding-left: 13.94rem; /* Equivalent to px-8 (32px) */
-  padding-right: 13.94rem;
+  max-width: 1200px; /* Restrict max width for better layout control */
+  width: 100%;
+  margin: 0 auto; /* Centers the container */
+  /* Large padding for spacing */
 }
 
 .hero-content {
@@ -149,5 +151,35 @@
   font-weight: 300;
   line-height: 24px;
   padding: 0px 16px 0px 64px;
+  text-align: left;
+}
+
+.pill-button {
+  border-radius: 16px;
+  color: #fafafa;
+  display: inline-block;
+  font-family: "Muli", sans-serif;
+  font-weight: 300;
+  line-height: 24px;
+  padding: 5px 15px;
+  text-align: left;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  color: #fafafa;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: left;
+}
+
+.portfolio-item-content {
+  border-radius: 20px;
+  box-shadow: #2d2d2d1a 3px 3px 8px 0px;
+  color: #fafafa;
+  font-weight: 300;
+  line-height: 24px;
   text-align: left;
 }

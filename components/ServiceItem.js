@@ -5,7 +5,7 @@ const ServiceItem = ({ title, description, icon, color }) => {
 
   return (
     <div className="col-lg-4 mb-6">
-      <div className={`service-item-box ${color} p-6 rounded-xl`}>
+      <div className={`service-item-box ${color} p-6 rounded-xl w-[350px] h-[180px]`}>
         <div className="service-content relative">
           <div className="rounded-[16px] absolute left-0 text-[#fafafa] inline font-light leading-[24px] text-left">
             {typeof icon === "string" ? <img src={icon} alt={title} className="w-10 h-10" /> : icon}
