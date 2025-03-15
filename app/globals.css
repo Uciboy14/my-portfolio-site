@@ -16,6 +16,10 @@
   font-family: var(--font-muli);
 }
 
+body {
+  font-family: var(--font-poppins);
+}
+
 .poppins {
   font-family: var(--font-poppins);
 }
@@ -182,4 +186,54 @@
   font-weight: 300;
   line-height: 24px;
   text-align: left;
+}
+
+.testimonial-item-box {
+  border-radius: 20px;
+  box-shadow: #2d2d2d1a 3px 3px 8px 0px;
+  color: #fafafa;
+  font-weight: 300;
+  line-height: 24px;
+  padding: 30px;
+  text-align: left;
+}
+
+.testimonial-header {
+  color: #fafafa;
+  display: flex;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: left;
+}
+
+.testimonial-bottom {
+  color: #d2d2d2;
+  font-family: Muli;
+  font-weight: 300;
+  line-height: 24px;
+  margin: 16px 0px 0px;
+  text-align: left;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes swing {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+.animate-swing {
+  animation: swing 3s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
 }

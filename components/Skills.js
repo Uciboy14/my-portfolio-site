@@ -35,21 +35,21 @@ const Skills = () => {
 
   return (
     <section className="leading-[24px] py-[48px] font-light text-left text-[#fafafa]">
-      <div className="container">
+      <div className="container mx-auto px-4">
         <div className="col-lg-full">
           <div className="title-content">
             <p className="title">level of knowledge</p>
-            <h2 className="text-[#1ab394] inline-block font-poppins text-[40px] font-semibold leading-[64.72px] mb-2 text-left">
+            <h2 className="text-[#1ab394] inline-block poppins text-[32px] md:text-[40px] font-semibold leading-[1.4] md:leading-[64.72px] mb-2 text-left">
               My Skills
             </h2>
           </div>
         </div>
-        <div className="flex">
-          <div className="col-lg-half">
+        <div className="flex flex-col md:flex-row gap-8 px-[15px]">
+          <div className="w-full md:w-1/2">
             <SkillBar skills={skills1} />
           </div>
 
-          <div className="col-lg-half">
+          <div className="w-full md:w-1/2">
             <SkillBar skills={skills2} />
           </div>
         </div>

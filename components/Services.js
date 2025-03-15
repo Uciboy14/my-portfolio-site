@@ -56,21 +56,21 @@ const Services = () => {
   
   return (
     <section className="leading-[24px] py-[48px] font-light text-left text-[#fafafa]">
-      <div className="container">
+      <div className="container px-[15px]">
         <div className="col-lg-full">
           <div className="title-content">
             <p className="title">get support for the services</p>
-            <h2 className="text-[#1ab394] inline-block font-poppins text-[40px] font-semibold leading-[64.72px] mb-2 text-left">
+            <h2 className="text-[#1ab394] inline-block font-poppins text-[32px] md:text-[40px] font-semibold leading-[1.4] md:leading-[64.72px] mb-2 text-left">
               My Services
             </h2>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
           {services1.map((service, index) => (
             <ServiceItem key={index} {...service} color={colors[index % colors.length]} />
           ))}
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {services2.map((service, index) => (
             <ServiceItem key={index} {...service} color={colors[(index + services1.length) % colors.length]} />
           ))}

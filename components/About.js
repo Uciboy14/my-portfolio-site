@@ -18,47 +18,38 @@ const About = () => {
   const secondHalf = personalDetails.slice(4, 8);
 
   return (
-    <section
-      className="bg-gray-900 text-[#fafafa] font-light leading-6 py-[100px] pb-[48px] text-left
-"
-    >
-      <div className="container">
-        <div className=" rounded-lg flex fr">
+    <section className="bg-gray-900 text-[#fafafa] font-light leading-6 py-[60px] md:py-[100px] pb-[48px] text-left">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col md:flex-row justify-center items-center md:items-end gap-8 md:gap-4">
           {/* Image Section */}
-          <div
-            className="text-[#fafafa] basis-1/2 font-light leading-6 px-[15px] text-left
-"
-          >
+          <div className="w-full md:basis-1/2 font-light leading-6 px-0 md:px-[15px] text-left">
             <img
               src="/about.jpg"
               alt="Workspace"
-              className="rounded-lg shadow-lg w-full"
+              className="rounded-3xl inline shadow-lg w-full max-h-[350px] object-cover"
             />
           </div>
 
           {/* Text Section */}
-          <div
-            className="text-[#fafafa] basis-1/2 font-light leading-6 px-[15px] text-left
-"
-          >
+          <div className="w-full md:basis-1/2 font-light leading-6 px-0 md:px-[15px] text-left">
             <div className="personal-items">
               <h2 className="base-color text-lg">About Me</h2>
-              <h5 className="poppins text-[20px] leading-[32.36px] font-medium text-white my-4 text-left">
+              <h5 className="poppins text-[18px] md:text-[20px] leading-[32.36px] font-medium text-white my-4 text-left">
                 <span className="base-color inline-block">Full-Stack </span> &
                 Flutter Mobile Developer
               </h5>
-              <div className="flex">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <PersonalInfo items={firstHalf} />
                 <PersonalInfo items={secondHalf} />
               </div>
             </div>
 
             {/* Buttons */}
-            <div className="mt-6 flex gap-4">
-              <button className="muli text-[16px] leading-6 text-left tracking-normal text-[#fafafa] px-[30px] py-[10px] bg-[#1ab394] hover:bg-[#0c9b7e] transition rounded-[16px] shadow-none">
+            <div className="mt-6 flex flex-col sm:flex-row gap-4">
+              <button className="w-full sm:w-auto text-center md:text-left muli text-[16px] leading-6 tracking-normal text-[#fafafa] px-[30px] py-[10px] bg-[#1ab394] hover:bg-[#0c9b7e] transition rounded-[16px] shadow-none">
                 Download CV
               </button>
-              <button className="muli text-[16px] leading-6 text-left tracking-normal text-[#fafafa] px-[30px] py-[10px] bg-[#1ab394] hover:bg-[#0c9b7e] transition rounded-[16px] shadow-none">
+              <button className="w-full sm:w-auto text-center md:text-left muli text-[16px] leading-6 tracking-normal text-[#fafafa] px-[30px] py-[10px] bg-[#1ab394] hover:bg-[#0c9b7e] transition rounded-[16px] shadow-none">
                 Hire Me
               </button>
             </div>

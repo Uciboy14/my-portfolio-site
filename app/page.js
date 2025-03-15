@@ -4,19 +4,19 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
-import Testimonial from "@/components/Testimonial";
 import Blog from "@/components/Blog";
+import TestimonialComponent from "@/components/TestimonialComponent";
 
 export default function Home() {
   return (
-    <div className="bg-gray-900 tracking-tight antialiased shadow-md">
+    <div className="bg-gray-900 ">
       <Navbar />
       <Hero />
       <About />
       <Skills />
       <Services />
       <Portfolio />
-      <Testimonial />
+      <TestimonialComponent />
       <Blog />
     </div>
   );

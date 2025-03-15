@@ -1,3 +1,4 @@
+"use client"
 const SkillBar = ({ skills }) => {
   return (
     <div className="">
@@ -14,13 +15,30 @@ const SkillBar = ({ skills }) => {
           <div className="skill-box">
             <div className="w-full bg-gray-300 rounded-full">
               <div
-                className={`h-3 rounded-full ${skill.color}`}
-                style={{ width: `${skill.percentage}%` }}
+                className={`h-3 rounded-full ${skill.color} transition-all duration-1000 ease-out`}
+                style={{ 
+                  width: '0%',
+                  animation: `skillBarFill-${skill.percentage} 1.5s ease-out forwards`,
+                  animationDelay: `${index * 0.2}s`
+                }}
               ></div>
             </div>
           </div>
         </div>
       ))}
+
+      <style jsx>{`
+        ${skills.map((skill) => `
+          @keyframes skillBarFill-${skill.percentage} {
+            0% {
+              width: 0%;
+            }
+            100% {
+              width: ${skill.percentage}%;
+            }
+          }
+        `).join('\n')}
+      `}</style>
     </div>
   );
 };
