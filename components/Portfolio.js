@@ -1,15 +1,38 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import PortfolioContent from "./PortfolioContent";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Portfolio = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [filteredItems, setFilteredItems] = useState([]);
+
   const portfolioItems = [
-    { src: "/web-dev-pics.jpg", alt: "Web Development" },
-    { src: "/app-dev.jpg", alt: "App Development" },
-    { src: "/api.jpg", alt: "API Development" },
-    { src: "/cloud-devops.png", alt: "Cloud & DevOps" },
-    { src: "/ecommerce.jpg", alt: "E-commerce" },
-    { src: "/payment-integration.jpg", alt: "Payment Integration" },
+    { src: "/web-dev-pics.jpg", alt: "Web Development", category: "Web Devs" },
+    { src: "/app-dev.jpg", alt: "App Development", category: "Mobile Devs" },
+    { src: "/api.jpg", alt: "API Development", category: "Backend & APIs" },
+    { src: "/cloud-devops.png", alt: "Cloud & DevOps", category: "Cloud & Devops" },
+    { src: "/ecommerce.jpg", alt: "E-commerce", category: "Ecommerce Development" },
+    { src: "/payment-integration.jpg", alt: "Payment Integration", category: "Backend & APIs" },
+  ];
+
+  React.useEffect(() => {
+    if (activeFilter === "All") {
+      setFilteredItems(portfolioItems);
+    } else {
+      const filtered = portfolioItems.filter(item => item.category === activeFilter);
+      setFilteredItems(filtered);
+    }
+  }, [activeFilter]);
+
+  const filterCategories = [
+    "All",
+    "Web Devs",
+    "Mobile Devs",
+    "Cloud & Devops",
+    "Ecommerce Development",
+    "Backend & APIs"
   ];
 
   return (
@@ -26,29 +49,28 @@ const Portfolio = () => {
         {/* Portfolio Filter List */}
         <div className="text-[#fafafa] basis-full font-light leading-6 px-[15px] text-left overflow-x-auto">
           <ul className="flex flex-wrap md:flex-nowrap min-w-max md:min-w-0">
-            <li className="mr-[12px] mb-[18px] bg-[#1ab394] rounded-[16px]">
-              <a className="pill-button whitespace-nowrap px-4 py-2 block hover:opacity-90 transition-opacity">All</a>
-            </li>
-            <li className="mr-[12px] mb-[18px] hover:bg-[#1ab394] hover:rounded-[16px] transition-colors">
-              <a className="pill-button whitespace-nowrap px-4 py-2 block">Web Devs</a>
-            </li>
-            <li className="mr-[12px] mb-[18px] hover:bg-[#1ab394] hover:rounded-[16px] transition-colors">
-              <a className="pill-button whitespace-nowrap px-4 py-2 block">Mobile Devs</a>
-            </li>
-            <li className="mr-[12px] mb-[18px] hover:bg-[#1ab394] hover:rounded-[16px] transition-colors">
-              <a className="pill-button whitespace-nowrap px-4 py-2 block">Cloud & Devops</a>
-            </li>
-            <li className="mr-[12px] mb-[18px] hover:bg-[#1ab394] hover:rounded-[16px] transition-colors">
-              <a className="pill-button whitespace-nowrap px-4 py-2 block">Ecommerce Development</a>
-            </li>
-            <li className="mr-[12px] mb-[18px] hover:bg-[#1ab394] hover:rounded-[16px] transition-colors">
-              <a className="pill-button whitespace-nowrap px-4 py-2 block">Backend & APIs</a>
-            </li>
+            {filterCategories.map((category, index) => (
+              <li
+                key={index}
+                className={`mr-[12px] mb-[18px] rounded-[16px] transition-colors cursor-pointer ${
+                  activeFilter === category ? "bg-[#1ab394]" : "hover:bg-[#1ab394]"
+                }`}
+                onClick={() => setActiveFilter(category)}
+              >
+                <a className="pill-button whitespace-nowrap px-4 py-2 block hover:opacity-90 transition-opacity">
+                  {category}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Portfolio section */}
-        <PortfolioContent portfolioItems={portfolioItems} />
+        <motion.div layout>
+          <AnimatePresence>
+            <PortfolioContent portfolioItems={filteredItems} />
+          </AnimatePresence>
+        </motion.div>
 
         {/* Portfolio Button */}
         <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-9 px-4">
