@@ -1,4 +1,5 @@
 "use client";
+import ArrowUpButton from "./ArrowUpButton";
 import SocialSidebar from "./SocialSidebar";
 import { useState, useEffect } from "react";
 
@@ -14,6 +15,16 @@ export default function Hero() {
     "Backend Developer",
     "Cloud AWS Engineer"
   ];
+
+  const handleDownloadCV = () => {
+    // The CV file should be placed in the public directory
+    const link = document.createElement('a');
+    link.href = '/uccodetech-resume.pdf'; // Update this with your actual CV filename
+    link.download = 'Uccodetech-CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   useEffect(() => {
     const handleTyping = () => {
@@ -44,9 +55,9 @@ export default function Hero() {
   }, [displayText, isDeleting, loopNum, typingSpeed, roles]);
 
   return (
-    <section className="hero-content min-h-screen flex items-center py-8 md:py-0">
+    <section id="home" className="hero-content min-h-screen flex items-center py-8 md:py-0">
       <div className="container px-4 md:px-6">
-        <div className="w-full flex flex-col md:flex-row items-center justify-center text-[#fafafa] font-light leading-6 gap-8 md:gap-0">
+        <div className="w-full flex flex-col md:flex-row items-center justify-center text-[#fafafa] font-light leading-6 gap-8 md:gap-0 px-4">
           {/* Left Content */}
           <div className="text-[#fafafa] w-full md:basis-1/2 font-light leading-6 text-center md:text-left">
             <h1 className="text-[#fafafa] poppins text-[32px] md:text-[40px] font-medium leading-tight md:leading-[64.72px] mb-4">
@@ -65,7 +76,10 @@ export default function Hero() {
               In a professional context, it often happens that private clients
               order a publication to be made.
             </p>
-            <button className="mt-4 md:mt-6 muli bg-[#1ab394] hover:bg-[#0c9b7e] rounded-[16px] text-[#fafafa] inline-block muli font-light leading-6 px-6 md:px-8 py-2.5 transition">
+            <button 
+              onClick={handleDownloadCV}
+              className="mt-4 md:mt-6 muli bg-[#1ab394] hover:bg-[#0c9b7e] rounded-[16px] text-[#fafafa] inline-block muli font-light leading-6 px-6 md:px-8 py-2.5 transition"
+            >
               Download CV
             </button>
           </div>
@@ -75,7 +89,7 @@ export default function Hero() {
             <div className="w-64 h-64 md:w-110 md:h-110 rounded-full bg-white flex items-center justify-center mx-auto relative">
               <img
                 src="/profile2.jpg"
-                alt="Jessy Doe"
+                alt="uccodetech"
                 className="w-full h-full object-cover rounded-full"
               />
               
@@ -166,6 +180,8 @@ export default function Hero() {
 
         {/* Social Media Sidebar */}
         <SocialSidebar />
+        {/* Return to Top Button */}
+        <ArrowUpButton />
       </div>
     </section>
   );

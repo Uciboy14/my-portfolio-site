@@ -66,7 +66,7 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="leading-[24px] py-[48px] font-light text-left text-[#fafafa] relative">
+    <section id="client" className="leading-[24px] py-[48px] font-light text-left text-[#fafafa] relative">
       <div className="container">
         <div className="col-lg-full">
           <div className="title-content">

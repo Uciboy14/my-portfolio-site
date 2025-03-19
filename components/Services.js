@@ -55,7 +55,7 @@ const Services = () => {
   ];
   
   return (
-    <section className="leading-[24px] py-[48px] font-light text-left text-[#fafafa]">
+    <section id="services" className="leading-[24px] py-[48px] font-light text-left text-[#fafafa]">
       <div className="container px-[15px]">
         <div className="col-lg-full">
           <div className="title-content">

@@ -36,7 +36,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <section className="leading-[24px] py-[48px] font-light text-left text-[#fafafa]">
+    <section id="portfolio" className="leading-[24px] py-[48px] font-light text-left text-[#fafafa]">
       <div className="container px-4">
         <div className="col-lg-full">
           <div className="title-content mb-8">
@@ -53,7 +53,7 @@ const Portfolio = () => {
               <li
                 key={index}
                 className={`mr-[12px] mb-[18px] rounded-[16px] transition-colors cursor-pointer ${
-                  activeFilter === category ? "bg-[#1ab394]" : "hover:bg-[#1ab394]"
+                  activeFilter === category ? "bg-[#1ab394] text-[#fafafa]" : "hover:bg-[#1ab394]"
                 }`}
                 onClick={() => setActiveFilter(category)}
               >

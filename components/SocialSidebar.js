@@ -2,7 +2,7 @@ import { FaFacebookF, FaTwitter, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export default function SocialSidebar() {
   return (
-    <div className="fixed left-0 bottom-0 flex flex-col items-center gap-7 text-white">
+    <div className="fixed left-0 bottom-0 lg:flex hidden   flex-col items-center gap-7 text-white">
       <p className="rotate-90 text-[16px] font-light text-right tracking-wide muli leading-[24px] inline-block py-6">Follow Me</p>
       <div className="w-[2px] h-14 bg-[#1ab394]"></div>
       <a href="#" className="hover:text-[#1ab394]">

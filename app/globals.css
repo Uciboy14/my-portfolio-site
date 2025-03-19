@@ -160,7 +160,6 @@ body {
 
 .pill-button {
   border-radius: 16px;
-  color: #fafafa;
   display: inline-block;
   font-family: "Muli", sans-serif;
   font-weight: 300;
@@ -214,6 +213,7 @@ body {
   margin: 16px 0px 0px;
   text-align: left;
 }
+
 
 html {
   scroll-behavior: smooth;

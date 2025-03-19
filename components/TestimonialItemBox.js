@@ -12,7 +12,7 @@ const TestimonialItemBox = ({ testimonialsData, currentIndex }) => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.5 }}
-            className="testimonial-item-box bg-gray-800 relative"
+            className="testimonial-item-box bg-gray-800 relative h-[215px]"
           >
             <div className="testimonial-header flex items-center gap-3.5 after:content-['\275E'] after:text-[#1ab394] after:text-7xl after:absolute after:right-8 after:top-11">
               <img

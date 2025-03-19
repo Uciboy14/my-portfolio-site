@@ -17,8 +17,24 @@ const About = () => {
   const firstHalf = personalDetails.slice(0, 4);
   const secondHalf = personalDetails.slice(4, 8);
 
+  const handleDownloadCV = () => {
+    const link = document.createElement('a');
+    link.href = '/Uccodetech-CV.pdf';
+    link.download = 'Uccodetech-CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="bg-gray-900 text-[#fafafa] font-light leading-6 py-[60px] md:py-[100px] pb-[48px] text-left">
+    <section id="about" className="bg-gray-900 text-[#fafafa] font-light leading-6 py-[60px] md:py-[100px] pb-[48px] text-left">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col md:flex-row justify-center items-center md:items-end gap-8 md:gap-4">
           {/* Image Section */}
@@ -46,10 +62,16 @@ const About = () => {
 
             {/* Buttons */}
             <div className="mt-6 flex flex-col sm:flex-row gap-4">
-              <button className="w-full sm:w-auto text-center md:text-left muli text-[16px] leading-6 tracking-normal text-[#fafafa] px-[30px] py-[10px] bg-[#1ab394] hover:bg-[#0c9b7e] transition rounded-[16px] shadow-none">
+              <button 
+                onClick={handleDownloadCV}
+                className="w-full sm:w-auto text-center md:text-left muli text-[16px] leading-6 tracking-normal text-[#fafafa] px-[30px] py-[10px] bg-[#1ab394] hover:bg-[#0c9b7e] transition rounded-[16px] shadow-none"
+              >
                 Download CV
               </button>
-              <button className="w-full sm:w-auto text-center md:text-left muli text-[16px] leading-6 tracking-normal text-[#fafafa] px-[30px] py-[10px] bg-[#1ab394] hover:bg-[#0c9b7e] transition rounded-[16px] shadow-none">
+              <button 
+                onClick={scrollToContact}
+                className="w-full sm:w-auto text-center md:text-left muli text-[16px] leading-6 tracking-normal text-[#fafafa] px-[30px] py-[10px] bg-[#1ab394] hover:bg-[#0c9b7e] transition rounded-[16px] shadow-none"
+              >
                 Hire Me
               </button>
             </div>

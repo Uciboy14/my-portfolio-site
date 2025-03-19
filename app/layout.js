@@ -14,8 +14,30 @@ const inter = Inter({
 
 
 export const metadata = {
-  title: "Uccodetech - Fully Responsive portfolio website",
-  description: "Showcasing my work",
+  title: "Uccodetech - Professional Portfolio & Development Services",
+  description: "Professional portfolio showcasing web development, design services, and technical expertise. Explore my projects, skills, and services.",
+  keywords: "web development, portfolio, frontend developer, backend developer, full-stack developer, React, Next.js",
+  authors: [{ name: "Uccodetech" }],
+  openGraph: {
+    title: "Uccodetech - Professional Portfolio & Development Services",
+    description: "Professional portfolio showcasing web development, design services, and technical expertise.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Uccodetech Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Uccodetech - Professional Portfolio & Development Services",
+    description: "Professional portfolio showcasing web development, design services, and technical expertise.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
 };
 
 export default function RootLayout({ children }) {
