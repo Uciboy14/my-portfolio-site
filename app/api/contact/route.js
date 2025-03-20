@@ -7,17 +7,15 @@ export async function POST(req) {
 
     // Create a transporter using SMTP
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false, // true for 465, false for other ports like 587
+      service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
+      tls: {
+        rejectUnauthorized: false
+      }
     });
-
-    // Verify transporter configuration
-    await transporter.verify();
 
     // Email content
     const mailOptions = {
@@ -40,7 +38,8 @@ export async function POST(req) {
     };
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', info.messageId);
 
     return NextResponse.json(
       { message: 'Email sent successfully' },
@@ -55,6 +54,8 @@ export async function POST(req) {
       errorMessage = 'Authentication failed. Please check your email credentials.';
     } else if (error.code === 'ECONNREFUSED') {
       errorMessage = 'Connection refused. Please check your internet connection.';
+    } else if (error.code === 'EPROTOCOL') {
+      errorMessage = 'Email service is temporarily unavailable. Please try again later.';
     }
 
     return NextResponse.json(

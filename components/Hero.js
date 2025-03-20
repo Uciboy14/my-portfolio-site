@@ -2,6 +2,7 @@
 import ArrowUpButton from "./ArrowUpButton";
 import SocialSidebar from "./SocialSidebar";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Hero() {
   const [displayText, setDisplayText] = useState("");
@@ -85,12 +86,16 @@ export default function Hero() {
           </div>
 
           {/* Right Content (Image + Circles) */}
-          <div className="text-[#fafafa] w-full md:basis-1/2 font-light leading-6">
-            <div className="w-64 h-64 md:w-110 md:h-110 rounded-full bg-white flex items-center justify-center mx-auto relative">
-              <img
+          <div className="text-[#fafafa] w-full md:basis-1/2 font-light leading-6 ">
+            <div className="w-80 h-80 md:w-[500px] md:h-[500px] rounded-full bg-white flex items-center justify-center mx-auto relative">
+              <Image
                 src="/profile2.jpg"
                 alt="uccodetech"
+                width={500}
+                height={500}
                 className="w-full h-full object-cover rounded-full"
+                priority
+                quality={75}
               />
               
               {/* Floating Circles */}

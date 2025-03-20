@@ -1,8 +1,9 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Logo = () => {
   return (
-    <div className="flex items-center space-x-2">
+    <Link href="/" className="flex items-center space-x-2">
       <svg
         className="w-8 h-8 text-green-500"
         viewBox="0 0 24 24"
@@ -34,8 +35,8 @@ const Logo = () => {
       <span className="text-green-500 text-xl font-bold tracking-tight">
         Uccode<span className="text-white">Tech</span>
       </span>
-    </div>
+    </Link>
   );
 };
 
-export default Logo; 
+export default Logo;

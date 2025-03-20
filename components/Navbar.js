@@ -46,9 +46,9 @@ export default function Navbar() {
     >
       <div className="text-[#fafafa] font-light leading-6 px-0 py-2 text-left muli">
         <div className="flex items-center justify-between text-[#fafafa] font-light leading-6 px-4 py-2 text-left muli">
-          <a className="text-green-500 text-xl font-bold text-[22px] leading-[33px] mx-[7px] py-[5px] text-left">
+          <div className="text-green-500 text-xl font-bold text-[22px] leading-[33px] mx-[7px] py-[5px] text-left">
             <Logo />
-          </a>
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center justify-end w-full text-[#fafafa] font-light leading-6 text-left">

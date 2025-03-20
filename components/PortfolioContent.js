@@ -24,7 +24,7 @@ const PortfolioContent = ({ portfolioItems }) => {
   };
 
   return (
-    <div className="portfolio-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 pt-[31px]">
+    <div className="portfolio-grid grid grid-cols-1 sm:grid-cols-2 px-4 lg:grid-cols-3 gap-6  pt-[31px]">
       {portfolioItems.map((item, index) => (
         <motion.div
           key={item.src}
@@ -49,7 +49,8 @@ const PortfolioContent = ({ portfolioItems }) => {
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-20">
             {getIcon(item.alt)}
-            <h3 className="text-white text-xl font-semibold mb-2">{item.alt}</h3>
+            <h3 className="text-white text-xl font-semibold mb-2">{item.title}</h3>
+            <p className="text-white text-sm text-center px-4 mb-4">{item.description}</p>
             <div className="flex items-center space-x-2">
               <FaLink className="text-white text-sm" />
               <p className="text-white text-sm">View Project</p>
