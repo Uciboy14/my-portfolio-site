@@ -105,3 +105,15 @@ out
 
 # Local Netlify folder
 .netlify
+
+# Specific large files
+core.29
+public/portfolio/portfolio-3.jpg
+public/about.jpg
+public/portfolio/25854.jpg
+public/portfolio/portfolio-4.png
+public/ecommerce-web-page-concept-illustration.zip
+public/nfc-technology-concept-illustration.zip
+public/portfolio/portfolio-5.jpg
+public/web-dev-pics.jpg
+public/flat-design-devops-illustration.zip
