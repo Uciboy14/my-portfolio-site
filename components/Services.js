@@ -22,17 +22,17 @@ const Services = () => {
     {
       title: "Full-Stack Devs.",
       description: "Building scalable web apps using modern frontend and backend technologies.",
-      icon: "/backend.png",
+      icon: "/services/web-2.png",
     },
     {
       title: "Mobile Devs.",
       description: "Creating cross-platform mobile applications using Flutter and Firebase.",
-      icon: "/mobile-development.png",
+      icon: "/services/mobile-2.png",
     },
     {
       title: "Backend & APIs",
       description: "We create secure and scalable backends. APIs power web and mobile apps.",
-      icon: "/backend.png",
+      icon: "/services/backend-1.png",
     },
   ];
   
@@ -40,17 +40,17 @@ const Services = () => {
     {
       title: "Cloud & DevOps",
       description: "Deploying applications to AWS and managing cloud infrastructure.",
-      icon: "/cloud-devops.png",
+      icon: "/services/devops-1.png",
     },
     {
       title: "E-commerce Devs.",
       description: "Building e-commerce platforms with seamless payment integration.",
-      icon: "/ecommerce.png",
+      icon: "/services/ecommerce-2.png",
     },
     {
       title: "Payment Systems",
       description: "Integrating PayPal, Bitcoin, and USDT payment solutions for secure transactions.",
-      icon: "/payment.png",
+      icon: "/services/payment-2.png",
     },
   ];
   

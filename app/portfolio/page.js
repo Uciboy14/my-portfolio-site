@@ -4,6 +4,7 @@ import PortfolioContent from '@/components/PortfolioContent';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { portfolioData } from '@/data/portfolioData';
 
 const PortfolioPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,46 +17,6 @@ const PortfolioPage = () => {
 
     return () => clearTimeout(timer);
   }, []);
-
-  const allPortfolioItems = [
-    {
-      src: "/portfolio/portfolio-1.png",
-      alt: "Web Development",
-      title: "E-commerce Website",
-      description: "A full-featured e-commerce platform built with Next.js and Stripe integration"
-    },
-    {
-      src: "/portfolio/portfolio-2.jpg",
-      alt: "App Development",
-      title: "Mobile Banking App",
-      description: "Cross-platform mobile banking application using Flutter"
-    },
-    {
-      src: "/portfolio/portfolio-3.jpg",
-      alt: "API Development",
-      title: "RESTful API Service",
-      description: "Backend API service with Node.js and Express"
-    },
-    {
-      src: "/portfolio/portfolio-4.png",
-      alt: "Cloud & DevOps",
-      title: "Cloud Infrastructure",
-      description: "AWS cloud infrastructure setup and management"
-    },
-    {
-      src: "/portfolio/portfolio-5.jpg",
-      alt: "E-commerce",
-      title: "Online Store",
-      description: "Custom e-commerce solution with payment integration"
-    },
-    {
-      src: "/portfolio/portfolio-6.jpg",
-      alt: "Payment Integration",
-      title: "Payment Gateway",
-      description: "Secure payment processing system integration"
-    },
-    // Add more portfolio items as needed
-  ];
 
   return (
     <div className="bg-gray-900 min-h-screen">
@@ -73,7 +34,7 @@ const PortfolioPage = () => {
                   </h2>
                 </div>
               </div>
-              <PortfolioContent portfolioItems={allPortfolioItems} />
+              <PortfolioContent portfolioItems={portfolioData} />
             </div>
           </section>
         </main>

@@ -4,56 +4,21 @@ import React, { useState } from "react";
 import PortfolioContent from "./PortfolioContent";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { portfolioData, portfolioCategories } from "../data/portfolioData";
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [filteredItems, setFilteredItems] = useState([]);
   const [showAll, setShowAll] = useState(false);
 
-  const portfolioItems = [
-    {
-      src: "/portfolio/portfolio-1.png",
-      alt: "Web Development",
-      title: "E-commerce Website",
-      description: "A full-featured e-commerce platform built with Next.js and Stripe integration"
-    },
-    {
-      src: "/portfolio/portfolio-2.jpg",
-      alt: "App Development",
-      title: "Mobile Banking App",
-      description: "Cross-platform mobile banking application using Flutter"
-    },
-    {
-      src: "/portfolio/portfolio-3.jpg",
-      alt: "API Development",
-      title: "RESTful API Service",
-      description: "Backend API service with Node.js and Express"
-    },
-    { src: "/web-dev-pics.jpg", alt: "Web Development", category: "Web Devs" },
-    { src: "/app-dev.jpg", alt: "App Development", category: "Mobile Devs" },
-    { src: "/api.jpg", alt: "API Development", category: "Backend & APIs" },
-    { src: "/cloud-devops.png", alt: "Cloud & DevOps", category: "Cloud & Devops" },
-    { src: "/ecommerce.jpg", alt: "E-commerce", category: "Ecommerce Development" },
-    { src: "/payment-integration.jpg", alt: "Payment Integration", category: "Backend & APIs" },
-  ];
-
   React.useEffect(() => {
     if (activeFilter === "All") {
-      setFilteredItems(portfolioItems);
+      setFilteredItems(portfolioData);
     } else {
-      const filtered = portfolioItems.filter(item => item.category === activeFilter);
+      const filtered = portfolioData.filter(item => item.category === activeFilter);
       setFilteredItems(filtered);
     }
   }, [activeFilter]);
-
-  const filterCategories = [
-    "All",
-    "Web Devs",
-    "Mobile Devs",
-    "Cloud & Devops",
-    "Ecommerce Development",
-    "Backend & APIs"
-  ];
 
   const displayedItems = showAll ? filteredItems : filteredItems.slice(0, 3);
 
@@ -71,7 +36,7 @@ const Portfolio = () => {
         {/* Portfolio Filter List */}
         <div className="text-[#fafafa] basis-full font-light leading-6 px-[15px] text-left overflow-x-auto">
           <ul className="flex flex-wrap md:flex-nowrap min-w-max md:min-w-0">
-            {filterCategories.map((category, index) => (
+            {portfolioCategories.map((category, index) => (
               <li
                 key={index}
                 className={`mr-[12px] mb-[18px] rounded-[16px] transition-colors cursor-pointer ${

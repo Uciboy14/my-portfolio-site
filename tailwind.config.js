@@ -1,19 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
-        mono: ["var(--font-roboto-mono)"],
-      },
-      colors: {
-        primary: "#1ab394",
-        secondary: "#fafafa",
+        poppins: ["Poppins", ...fontFamily.sans],
+        inter: ["var(--font-inter), sans-serif"],
+        muli: ["Muli", "sans-serif"],
       },
       keyframes: {
         float: {
@@ -47,6 +41,21 @@ module.exports = {
         circle3: {
           '0%': { transform: 'rotate(240deg)' },
           '100%': { transform: 'rotate(600deg)' }
+        },
+        rotateTwice: {
+          '0%': { transform: 'rotate(0deg)' },
+          '50%': { transform: 'rotate(360deg)' },
+          '100%': { transform: 'rotate(-360deg)' }
+        },
+        'rotate-wheel': {
+          '0%': { transform: 'rotate(0deg)' },
+          '50%': { transform: 'rotate(360deg)' },
+          '100%': { transform: 'rotate(0deg)' }
+        },
+        'turn-head': {
+          '0%': { transform: 'rotateY(0deg)' },
+          '50%': { transform: 'rotateY(180deg)' },
+          '100%': { transform: 'rotateY(0deg)' }
         }
       },
       animation: {
@@ -57,12 +66,11 @@ module.exports = {
         'slide-in': 'slideIn 0.8s ease-out forwards',
         'circle-1': 'circle1 8s linear infinite',
         'circle-2': 'circle2 8s linear infinite',
-        'circle-3': 'circle3 8s linear infinite'
+        'circle-3': 'circle3 8s linear infinite',
+        'rotate-wheel': 'rotate-wheel 2s ease-in-out forwards',
+        'turn-head': 'turn-head 2s ease-in-out forwards'
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 };

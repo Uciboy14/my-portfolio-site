@@ -5,14 +5,14 @@ const ServiceItem = ({ title, description, icon, color }) => {
 
   return (
     <div className="w-full mb-6">
-      <div className={`service-item-box ${color} p-4 md:p-6 rounded-xl w-full min-h-[180px]`}>
+      <div className={`service-item-box ${color} p-4 md:p-6 rounded-xl w-full min-h-[180px] group`}>
         <div className="service-content relative">
           <div className="rounded-[16px] absolute left-0 text-[#fafafa] inline font-light leading-[24px] text-left">
             {typeof icon === "string" ? (
               <img 
                 src={icon} 
                 alt={title} 
-                className="w-10 h-10 md:w-12 md:h-12 animate-swing" 
+                className="w-10 h-10 md:w-12 md:h-12 group-hover:animate-turn-head"
               />
             ) : icon}
           </div>
@@ -26,6 +26,13 @@ const ServiceItem = ({ title, description, icon, color }) => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes turn-head {
+          0% { transform: rotateY(0deg); }
+          50% { transform: rotateY(180deg); }
+          100% { transform: rotateY(0deg); }
+        }
+      `}</style>
     </div>
   );
 };

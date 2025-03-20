@@ -40,7 +40,7 @@ const About = () => {
           {/* Image Section */}
           <div className="w-full md:basis-1/2 font-light leading-6 px-0 md:px-[15px] text-left">
             <img
-              src="/about.jpg"
+              src="/about/about-05.jpg"
               alt="Workspace"
               className="rounded-3xl inline shadow-lg w-full max-h-[350px] object-cover"
             />

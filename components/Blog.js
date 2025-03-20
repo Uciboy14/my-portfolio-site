@@ -5,7 +5,7 @@ import Link from 'next/link'
 const Blog = () => {
   const blogPosts = [
     {
-      image: "/blog-01.jpg",
+      image: "/blog/blog-01.jpg",
       date: "March 18, 2025",
       comments: "3",
       title: "Be your best version",
@@ -13,7 +13,7 @@ const Blog = () => {
       slug: "be-your-best-version"
     },
     {
-      image: "/blog-02.jpg",
+      image: "/blog/blog-02.jpg",
       date: "March 15, 2025",
       comments: "(5)",
       title: "Blog Post 2",
@@ -21,7 +21,7 @@ const Blog = () => {
       slug: "blog-post-2"
     },
     {
-      image: "/blog-03.jpg",
+      image: "/blog/blog-03.jpg",
       date: "March 10, 2025",
       comments: "(2)",
       title: "Blog Post 3",
