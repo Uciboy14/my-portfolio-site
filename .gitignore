@@ -24,8 +24,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# local env files
+.env*.local
 
 # vercel
 .vercel
@@ -34,11 +34,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# IDE specific files
-.idea
-.vscode
-*.swp
-*.swo
+# IDE
+.idea/
+.vscode/
 
 # OS generated files
 .DS_Store
@@ -84,13 +82,6 @@ logs
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

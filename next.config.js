@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-  images: {
-    unoptimized: true,
-  },
-  compress: true,
-  poweredByHeader: false,
   reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['localhost'],
+  }
 }
 
 module.exports = nextConfig 

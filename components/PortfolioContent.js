@@ -1,64 +1,114 @@
 import Image from "next/image";
 import React from "react";
-import { FaGlobe, FaMobileAlt, FaServer, FaCloud, FaShoppingCart, FaCreditCard, FaLink } from "react-icons/fa";
+import dynamic from 'next/dynamic';
 import { motion } from "framer-motion";
 
-const PortfolioContent = ({ portfolioItems }) => {
-  const getIcon = (alt) => {
-    switch (alt) {
-      case "Web Development":
-        return <FaGlobe className="text-3xl mb-3" />;
-      case "App Development":
-        return <FaMobileAlt className="text-3xl mb-3" />;
-      case "API Development":
-        return <FaServer className="text-3xl mb-3" />;
-      case "Cloud & DevOps":
-        return <FaCloud className="text-3xl mb-3" />;
-      case "E-commerce":
-        return <FaShoppingCart className="text-3xl mb-3" />;
-      case "Payment Integration":
-        return <FaCreditCard className="text-3xl mb-3" />;
+// Dynamically import icons
+const FaGlobe = dynamic(() => import('react-icons/fa').then(mod => mod.FaGlobe), { ssr: false });
+const FaMobileAlt = dynamic(() => import('react-icons/fa').then(mod => mod.FaMobileAlt), { ssr: false });
+const FaServer = dynamic(() => import('react-icons/fa').then(mod => mod.FaServer), { ssr: false });
+const FaCloud = dynamic(() => import('react-icons/fa').then(mod => mod.FaCloud), { ssr: false });
+const FaShoppingCart = dynamic(() => import('react-icons/fa').then(mod => mod.FaShoppingCart), { ssr: false });
+const FaCreditCard = dynamic(() => import('react-icons/fa').then(mod => mod.FaCreditCard), { ssr: false });
+const FaLink = dynamic(() => import('react-icons/fa').then(mod => mod.FaLink), { ssr: false });
+
+const PortfolioContent = ({ project, onClose }) => {
+  const getIcon = (category) => {
+    switch (category.toLowerCase()) {
+      case 'web':
+        return <FaGlobe className="w-6 h-6" />;
+      case 'mobile':
+        return <FaMobileAlt className="w-6 h-6" />;
+      case 'backend':
+        return <FaServer className="w-6 h-6" />;
+      case 'cloud':
+        return <FaCloud className="w-6 h-6" />;
+      case 'ecommerce':
+        return <FaShoppingCart className="w-6 h-6" />;
+      case 'payment':
+        return <FaCreditCard className="w-6 h-6" />;
       default:
-        return <FaLink className="text-3xl mb-3" />;
+        return <FaLink className="w-6 h-6" />;
     }
   };
 
   return (
-    <div className="portfolio-grid grid grid-cols-1 sm:grid-cols-2 px-4 lg:grid-cols-3 gap-6  pt-[31px]">
-      {portfolioItems.map((item, index) => (
-        <motion.div
-          key={item.src}
-          layout
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{
-            opacity: { duration: 0.4 },
-            scale: { duration: 0.4 },
-            layout: { duration: 0.4 }
-          }}
-          className="portfolio-item group relative overflow-hidden rounded-[16px] bg-white aspect-[1.4/1]"
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1ab394] opacity-0 group-hover:opacity-90 transition-all duration-500 ease-in-out z-10"></div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        className="bg-gray-800 rounded-[20px] max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="relative">
           <Image
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-500 ease-in-out"
-            width={400}
-            height={300}
-            src={item.src}
-            alt={item.alt}
+            src={project.src}
+            alt={project.title}
+            width={800}
+            height={400}
+            className="w-full h-[400px] object-cover rounded-t-[20px]"
           />
-          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out z-20">
-            {getIcon(item.alt)}
-            <h3 className="text-white text-xl font-semibold mb-2">{item.title}</h3>
-            <p className="text-white text-sm text-center px-4 mb-4">{item.description}</p>
-            <div className="flex items-center space-x-2">
-              <FaLink className="text-white text-sm" />
-              <p className="text-white text-sm">View Project</p>
-            </div>
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-colors"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="p-8">
+          <div className="flex items-center gap-2 mb-4">
+            {getIcon(project.category)}
+            <h2 className="text-2xl font-bold text-white">{project.title}</h2>
           </div>
-        </motion.div>
-      ))}
-    </div>
+          
+          <p className="text-gray-300 mb-6 font-light leading-6">{project.description}</p>
+          
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-sm font-light"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex gap-4">
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 bg-[#1ab394] text-white rounded-full hover:bg-[#169c7d] transition-colors font-light"
+              >
+                Live Demo
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-2 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-colors font-light"
+              >
+                GitHub
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

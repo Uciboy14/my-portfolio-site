@@ -1,35 +1,9 @@
 import React from 'react'
 import BlogCard from './BlogCard'
 import Link from 'next/link'
+import { blogPosts } from '@/data/blogData'
 
 const Blog = () => {
-  const blogPosts = [
-    {
-      image: "/blog/blog-01.jpg",
-      date: "March 18, 2025",
-      comments: "3",
-      title: "Be your best version",
-      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.",
-      slug: "be-your-best-version"
-    },
-    {
-      image: "/blog/blog-02.jpg",
-      date: "March 15, 2025",
-      comments: "(5)",
-      title: "Blog Post 2",
-      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.",
-      slug: "blog-post-2"
-    },
-    {
-      image: "/blog/blog-03.jpg",
-      date: "March 10, 2025",
-      comments: "(2)",
-      title: "Blog Post 3",
-      description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.",
-      slug: "blog-post-3"
-    }
-  ]
-
   return (
     <section id="blog" className="leading-[24px] py-[48px] font-light text-left text-[#fafafa]">
       <div className="container">

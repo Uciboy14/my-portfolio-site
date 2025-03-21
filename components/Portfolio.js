@@ -1,79 +1,169 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
-import PortfolioContent from "./PortfolioContent";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, Suspense, useEffect } from "react";
+import dynamic from 'next/dynamic';
 import Link from "next/link";
 import { portfolioData, portfolioCategories } from "../data/portfolioData";
 
+// Dynamically import motion components
+const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), {
+  ssr: false,
+  loading: () => <div className="w-full h-full" />
+});
+
+const AnimatePresence = dynamic(() => import('framer-motion').then(mod => mod.AnimatePresence), {
+  ssr: false,
+  loading: () => null
+});
+
+const PortfolioContent = dynamic(() => import("./PortfolioContent"), {
+  loading: () => <div className="w-full h-full animate-pulse bg-gray-700 rounded-lg" />
+});
+
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [showAll, setShowAll] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [displayCount, setDisplayCount] = useState(6);
 
-  React.useEffect(() => {
-    if (activeFilter === "All") {
-      setFilteredItems(portfolioData);
-    } else {
-      const filtered = portfolioData.filter(item => item.category === activeFilter);
-      setFilteredItems(filtered);
+  // Reset display count when category changes
+  useEffect(() => {
+    setDisplayCount(6);
+  }, [selectedCategory]);
+
+  const filteredProjects = selectedCategory === "All"
+    ? portfolioData
+    : portfolioData.filter(project => project.category === selectedCategory);
+
+  const displayedProjects = filteredProjects.slice(0, displayCount);
+
+  const handleShowMore = () => {
+    setDisplayCount(prev => prev + 3);
+  };
+
+  const handleShowLess = () => {
+    setDisplayCount(prev => Math.max(6, prev - 3));
+  };
+
+  const getRandomDirection = () => {
+    const directions = ['left', 'right', 'up', 'down'];
+    return directions[Math.floor(Math.random() * directions.length)];
+  };
+
+  const getInitialPosition = (direction) => {
+    switch (direction) {
+      case 'left': return { x: -100, y: 0 };
+      case 'right': return { x: 100, y: 0 };
+      case 'up': return { x: 0, y: -100 };
+      case 'down': return { x: 0, y: 100 };
+      default: return { x: 0, y: 0 };
     }
-  }, [activeFilter]);
+  };
 
-  const displayedItems = showAll ? filteredItems : filteredItems.slice(0, 3);
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
 
   return (
     <section id="portfolio" className="leading-[24px] py-[48px] font-light text-left text-[#fafafa]">
-      <div className="container">
+      <div className="container px-[15px]">
         <div className="col-lg-full">
-          <div className="title-content mb-8">
-            <p className="title text-base md:text-lg">Awesome works and enjoy</p>
-            <h2 className="text-[#1ab394] inline-block font-poppins text-[32px] md:text-[40px] font-semibold leading-tight md:leading-[64.72px] mb-2 text-left">
-              My portfolio
+          <div className="title-content">
+            <p className="title">my work</p>
+            <h2 className="text-[#1ab394] inline-block poppins text-[32px] md:text-[40px] font-semibold leading-[1.4] md:leading-[64.72px] mb-2 text-left">
+              Featured Portfolio
             </h2>
           </div>
         </div>
-        {/* Portfolio Filter List */}
-        <div className="text-[#fafafa] basis-full font-light leading-6 px-[15px] text-left overflow-x-auto">
-          <ul className="flex flex-wrap md:flex-nowrap min-w-max md:min-w-0">
-            {portfolioCategories.map((category, index) => (
-              <li
-                key={index}
-                className={`mr-[12px] mb-[18px] rounded-[16px] transition-colors cursor-pointer ${
-                  activeFilter === category ? "bg-[#1ab394] text-[#fafafa]" : "hover:bg-[#1ab394]"
-                }`}
-                onClick={() => setActiveFilter(category)}
-              >
-                <a className="pill-button whitespace-nowrap px-4 py-2 block hover:opacity-90 transition-opacity">
-                  {category}
-                </a>
-              </li>
-            ))}
-          </ul>
+        
+        <div className="flex flex-wrap gap-4 mb-12">
+          {portfolioCategories.map((category) => (
+            <button
+              key={category}
+              onClick={() => handleCategoryChange(category)}
+              className={`px-6 py-2 rounded-full ${
+                selectedCategory === category
+                  ? "bg-[#1ab394] text-white"
+                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
-        {/* Portfolio section */}
-        <motion.div layout>
-          <AnimatePresence>
-            <PortfolioContent portfolioItems={displayedItems} />
+        <div className="portfolio-grid">
+          <AnimatePresence mode="wait">
+            {displayedProjects.map((project, index) => {
+              const direction = getRandomDirection();
+              const initial = getInitialPosition(direction);
+              return (
+                <MotionDiv
+                  key={`${project.id}-${selectedCategory}`}
+                  initial={{ opacity: 0, ...initial }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  exit={{ opacity: 0, ...initial }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                  }}
+                  className="relative group cursor-pointer"
+                  onClick={() => setSelectedProject(project)}
+                >
+                  <div className="portfolio-item-content overflow-hidden rounded-[20px]">
+                    <Image
+                      src={project.src}
+                      alt={project.title}
+                      width={400}
+                      height={300}
+                      className="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <h3 className="text-white text-xl font-semibold">{project.title}</h3>
+                    </div>
+                  </div>
+                </MotionDiv>
+              );
+            })}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
-        {/* Portfolio Button */}
-        <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-9 px-4">
-          <button 
-            onClick={() => setShowAll(!showAll)}
-            className="w-full md:w-auto mt-6 muli bg-[#1ab394] hover:bg-[#0c9b7e] rounded-[16px] text-[#fafafa] inline-block font-muli font-light leading-6 px-8 py-2.5 text-center md:text-left transition"
-          >
-            {showAll ? 'Show Less' : 'Show More'}
-          </button>
-          <Link href="/portfolio">
-            <button className="w-full md:w-auto mt-6 muli bg-[#1ab394] hover:bg-[#0c9b7e] rounded-[16px] text-[#fafafa] inline-block font-muli font-light leading-6 px-8 py-2.5 text-center md:text-left transition">
-              Portfolio Page
+        <div className="flex justify-center gap-4 mt-12">
+          {displayedProjects.length < filteredProjects.length && (
+            <button
+              onClick={handleShowMore}
+              className="px-8 py-3 bg-[#1ab394] text-white rounded-full hover:bg-[#169c7d] transition-colors font-light"
+            >
+              Show More
             </button>
+          )}
+          {displayedProjects.length > 6 && (
+            <button
+              onClick={handleShowLess}
+              className="px-8 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors font-light"
+            >
+              Show Less
+            </button>
+          )}
+          <Link 
+            href="/portfolio" 
+            className="px-8 py-3 bg-[#1ab394] text-white rounded-full hover:bg-[#169c7d] transition-colors font-light"
+          >
+            Portfolio Page
           </Link>
         </div>
       </div>
+
+      {selectedProject && (
+        <Suspense fallback={<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+        </div>}>
+          <PortfolioContent
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
+        </Suspense>
+      )}
     </section>
   );
 };

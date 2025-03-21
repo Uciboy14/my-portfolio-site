@@ -1,22 +1,27 @@
 import React from 'react'
+import { blogPosts } from '@/data/blogData'
+
+// Add generateStaticParams function
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.slug,
+  }))
+}
 
 const BlogPost = ({ params }) => {
-  // In a real application, you would fetch the blog post data based on the slug
-  // For now, we'll use dummy data
-  const blogPost = {
-    image: "/blog-01.jpg",
-    date: "March 18, 2025",
-    comments: "3",
-    title: "Be your best version",
-    content: `
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    `,
-    author: "John Doe",
-    category: "Personal Development"
+  const blogPost = blogPosts.find(post => post.slug === params.slug)
+
+  if (!blogPost) {
+    return (
+      <div className="bg-gray-900 min-h-screen pt-20">
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-4xl mx-auto text-center text-[#fafafa]">
+            <h1 className="text-4xl font-bold mb-4">Blog Post Not Found</h1>
+            <p className="text-gray-400">The blog post you're looking for doesn't exist.</p>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
